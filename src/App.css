@@ -10,12 +10,9 @@
   font-family: "Barriecito", system-ui;
   background-color: #333;
   position: relative;
-
 }
 
-p,
-h3,
-h1 {
+p, h3, h1 {
   margin-block-start: 0;
   margin-block-end: 0;
 }
@@ -26,14 +23,13 @@ h1 {
   color: red;
 }
 
-
-
 .task-item {
   display: flex;
   flex-direction: column;
   gap: 5px;
   position: relative;
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
   background: #fff;
   padding: 16px;
   border-radius: 12px;
@@ -41,8 +37,8 @@ h1 {
   transition: box-shadow 0.3s ease-in-out;
   border: 1px solid #ddd;
   font-family: "nunito", system-ui;
- position: relative;
- height: 170px;
+  position: relative;
+  height: 170px;
 }
 
 .task-item:hover {
@@ -55,7 +51,6 @@ h1 {
   color: #333;
   margin-bottom: 6px;
   margin-top: 25px;
-
 }
 
 .task-date {
@@ -70,7 +65,7 @@ h1 {
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  letter-spacing: 5px; ;
+  letter-spacing: 5px;
 }
 
 .task-header {
@@ -116,7 +111,6 @@ h1 {
 .task-btns {
   display: flex;
   justify-content: flex-end;
-
 }
 
 #task-list {
@@ -131,7 +125,6 @@ h1 {
   font-family: "Barriecito", system-ui;
   font-size: 80px;
   color: white;
-
 }
 
 #task-list button {
@@ -142,11 +135,10 @@ h1 {
   font-weight: bold;
   font-size: larger;
   font-family: "Barriecito", system-ui;
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
   position: sticky;
   bottom: 10px;
-  left:3000px
-  
 }
 
 #task-list button:hover {
@@ -156,10 +148,9 @@ h1 {
 
 #tasks {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 15px;
 }
-
 
 .task-link {
   font-size: 0.9rem;
@@ -169,7 +160,7 @@ h1 {
   transition: color 0.3s;
   text-align: center;
   letter-spacing: 1px;
-  border: 1px solid black; 
+  border: 1px solid black;
   border-top: none;
   width: 100px;
   margin: 0 auto;
@@ -178,16 +169,19 @@ h1 {
   left: 50%;
   transform: translateX(-50%);
   background-color: #1e5591;
-  border-bottom-right-radius:  12px;
-  border-bottom-left-radius:  12px;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
 }
-.fa-solid.fa-square-xmark{
+
+.fa-solid.fa-square-xmark {
   color: red;
 }
-.fa-solid.fa-square-check{
+
+.fa-solid.fa-square-check {
   color: green;
 }
-.fa-solid.fa-trash{
+
+.fa-solid.fa-trash {
   color: red;
 }
 
@@ -196,7 +190,7 @@ h1 {
   text-decoration: underline;
 }
 
-.task-delete{
+.task-delete {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -210,8 +204,6 @@ h1 {
   top: 10px;
   right: 30px;
   font-size: 20px;
-
-
 }
 
 #form-container {
@@ -219,7 +211,8 @@ h1 {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 320px;
+  width: 100%;
+  max-width: 320px;
 }
 
 form {
@@ -228,20 +221,16 @@ form {
 }
 
 form input {
-
   padding: 8px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-
-
 }
 
 ::placeholder {
   font-family: "nunito", system-ui;
   color: #0477eb;
   letter-spacing: 1px;
-  ;
 }
 
 form button {
@@ -256,4 +245,39 @@ form button {
 
 form button:hover {
   background: #0056b3;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 1200px) {
+  #tasks {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  #tasks {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #task-list h1 {
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 600px) {
+  #tasks {
+    grid-template-columns: 1fr;
+  }
+
+  #task-list h1 {
+    font-size: 40px;
+  }
+
+  .task-item {
+    width: 100%;
+  }
+
+  #task-list button {
+    width: 100%;
+  }
 }
